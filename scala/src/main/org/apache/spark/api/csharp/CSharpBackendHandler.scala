@@ -76,10 +76,8 @@ class CSharpBackendHandler(server: CSharpBackend) extends SimpleChannelInboundHa
             if (socket != null) {
               val dataOutputStream = new DataOutputStream(socket.getOutputStream)
               SerDe.writeString(dataOutputStream, "close")
-              try {
                 socket.close()
                 socket = null
-              }
             }
           } while (socket != null)
           CSharpBackend.callbackSocketShutdown = true

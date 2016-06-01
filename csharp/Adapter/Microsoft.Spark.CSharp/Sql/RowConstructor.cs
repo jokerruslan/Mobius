@@ -2,8 +2,8 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
+using System.Linq;
 using System.Threading;
-
 using Razorvine.Pickle;
 
 namespace Microsoft.Spark.CSharp.Sql
@@ -13,6 +13,8 @@ namespace Microsoft.Spark.CSharp.Sql
     /// </summary>
     public class RowConstructor : IObjectConstructor
     {
+        //private readonly ILoggerService logger = LoggerServiceFactory.GetLogger(typeof(RowConstructor));
+
         //construction is done using multiple RowConstructor objects with multiple calls to construct method with first call always
         //done using schema as the args. Using static variables to store the schema and if it is set (that is if the first call is made)
         /// <summary>
@@ -55,9 +57,13 @@ namespace Microsoft.Spark.CSharp.Sql
         {
             if (!isCurrentSchemaSet) //first call always includes schema and schema is always in args[0]
             {
+                
                 currentSchema = args[0].ToString();
+                //logger.LogDebug("Current schema not set. Set to {0}", currentSchema);
                 isCurrentSchemaSet = true;
             }
+
+            //logger.LogDebug("Args {0}", args);
 
             return new RowConstructor { Values = args, Schema = currentSchema };
         }
@@ -75,7 +81,7 @@ namespace Microsoft.Spark.CSharp.Sql
             //next row will have schema - so resetting is fine
             isCurrentSchemaSet = false;
             currentSchema = null;
-
+            //logger.LogDebug("Row {0}", row.ToString());
             return row;
         }
 
@@ -96,7 +102,7 @@ namespace Microsoft.Spark.CSharp.Sql
                 }
 
             }
-
+            //logger.LogDebug("Values {0}", string.Join(",", values.Select(v => v.ToString())));
             return values;
         }
     }

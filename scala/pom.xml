@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.microsoft.sparkclr</groupId>
-  <artifactId>spark-clr_2.10</artifactId>
-  <version>1.6.101-SNAPSHOT</version>
+  <artifactId>spark-clr_2.11</artifactId>
+  <version>2.0.000-SNAPSHOT</version>
   <name>Mobius Project</name>
   <description>C# language binding and extensions to Apache Spark</description>
   <url>https://github.com/Microsoft/Mobius</url>
@@ -29,14 +29,20 @@
     <developerConnection>scm:git:git@github.com:Microsoft/Mobius.git</developerConnection>
     <url>git@github.com:Microsoft/Mobius.git</url>
   </scm>
-
+    <repositories>
+        <repository>
+            <id>apache</id>
+            <name>your custom repo</name>
+            <url>https://repository.apache.org/content/groups/public/</url>
+        </repository>
+    </repositories>
   <properties>
     <maven.compiler.source>1.5</maven.compiler.source>
     <maven.compiler.target>1.5</maven.compiler.target>
     <encoding>UTF-8</encoding>
-    <scala.version>2.10.4</scala.version>
-    <spark.version>1.6.1</spark.version>
-    <scala.binary.version>2.10</scala.binary.version>
+    <scala.version>2.11.8</scala.version>
+    <spark.version>2.0.0-SNAPSHOT</spark.version>
+    <scala.binary.version>2.11</scala.binary.version>
   </properties>
 
   <dependencies>
@@ -79,34 +85,34 @@
       </dependency>
       <dependency>
           <groupId>org.apache.spark</groupId>
-          <artifactId>spark-core_2.10</artifactId>
-          <version>${spark.version}</version>
+          <artifactId>spark-core_2.11</artifactId>
+          <version>2.0.0-20160531.095628-416</version>
           <!--the following is placeholder for building uber package. Please keep as-is-->
 	      <!--<scope>provided</scope>-->
       </dependency>
       <dependency>
           <groupId>org.apache.spark</groupId>
-          <artifactId>spark-streaming_2.10</artifactId>
-          <version>${spark.version}</version>
+          <artifactId>spark-streaming_2.11</artifactId>
+          <version>2.0.0-20160531.095800-416</version>
           <!--the following is placeholder for building uber package. Please keep as-is-->
 	      <!--<scope>provided</scope>-->
       </dependency>
       <dependency>
           <groupId>org.apache.spark</groupId>
-          <artifactId>spark-streaming-kafka_2.10</artifactId>
-          <version>${spark.version}</version>
+          <artifactId>spark-streaming-kafka-0-8_2.11</artifactId>
+          <version>2.0.0-20160531.100853-30</version>
       </dependency>
       <dependency>
           <groupId>org.apache.spark</groupId>
-          <artifactId>spark-sql_2.10</artifactId>
-          <version>${spark.version}</version>
+          <artifactId>spark-sql_2.11</artifactId>
+          <version>2.0.0-20160531.100221-346</version>
           <!--the following is placeholder for building uber package. Please keep as-is-->
 	      <!--<scope>provided</scope>-->
       </dependency>
       <dependency>
           <groupId>org.apache.spark</groupId>
-          <artifactId>spark-hive_2.10</artifactId>
-          <version>1.6.0</version>
+          <artifactId>spark-hive_2.11</artifactId>
+          <version>2.0.0-20160531.100552-346</version>
           <!--the following is placeholder for building uber package. Please keep as-is-->
           <!--<scope>provided</scope>-->
       </dependency>
@@ -298,6 +304,7 @@
               </executions>
           </plugin>
           <!-- sign stuff for maven-central via OSSRH/Sonatype -->
+            <!-- uncomment after removing apache snapshot repo
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
@@ -311,7 +318,7 @@
                 </goals>
               </execution>
             </executions>
-          </plugin>
+          </plugin> -->
         </plugins>
       </build>
     </profile>
@@ -326,6 +333,7 @@
       </activation>
       <build>
         <plugins>
+            <!-- uncomment after removing apache snapshot repo
           <plugin>
             <groupId>org.sonatype.plugins</groupId>
             <artifactId>nexus-staging-maven-plugin</artifactId>
@@ -336,7 +344,7 @@
               <nexusUrl>https://oss.sonatype.org/</nexusUrl>
               <autoReleaseAfterClose>true</autoReleaseAfterClose>
             </configuration>
-          </plugin>
+          </plugin>-->
         </plugins>
       </build>
     </profile>

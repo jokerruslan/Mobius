@@ -72,9 +72,7 @@ object CSharpDStream {
 
         // close this socket if error happen
         if (socket != null) {
-          try {
             socket.close()
-          }
         }
 
         None

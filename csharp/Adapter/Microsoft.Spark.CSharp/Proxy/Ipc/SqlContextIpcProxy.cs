@@ -4,9 +4,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Spark.CSharp.Interop;
 using Microsoft.Spark.CSharp.Interop.Ipc;
 using Microsoft.Spark.CSharp.Sql;
@@ -94,13 +91,17 @@ namespace Microsoft.Spark.CSharp.Proxy.Ipc
             var arrayListReference = SparkCLRIpcProxy.JvmBridge.CallConstructor("java.util.ArrayList", new object[] { });
 
             var dt =  new JvmObjectReference((string)SparkCLRIpcProxy.JvmBridge.CallStaticJavaMethod("org.apache.spark.sql.types.DataType", "fromJson", new object[] { "\"" + returnType + "\"" }));
-
-            var udf = SparkCLRIpcProxy.JvmBridge.CallConstructor("org.apache.spark.sql.UserDefinedPythonFunction", new object[]
-                {
-                    name, command, hashTableReference, arrayListReference, 
+            var function = new JvmObjectReference((string)SparkCLRIpcProxy.JvmBridge.CallStaticJavaMethod("org.apache.spark.sql.api.csharp.SQLUtils", "createCSharpFunction", new object[]
+            {
+                command, hashTableReference, arrayListReference,
                     SparkCLREnvironment.ConfigurationService.GetCSharpWorkerExePath(),
                     "1.0",
-                    arrayListReference, null, dt
+                    arrayListReference, null
+            }));
+
+            var udf = SparkCLRIpcProxy.JvmBridge.CallConstructor("org.apache.spark.sql.execution.python.UserDefinedPythonFunction", new object[]
+                {
+                    name, function, dt
                 });
 
             SparkCLRIpcProxy.JvmBridge.CallNonStaticJavaMethod(judf, "registerPython", new object[] {name, udf});

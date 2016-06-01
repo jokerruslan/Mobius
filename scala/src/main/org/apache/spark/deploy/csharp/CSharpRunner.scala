@@ -6,14 +6,16 @@
 package org.apache.spark.deploy.csharp
 
 import java.io.File
+import java.nio.file.Paths
 import java.util.concurrent.{Semaphore, TimeUnit}
 
 import org.apache.hadoop.fs.Path
+import org.apache.log4j.LogManager
 import org.apache.spark.SparkConf
 import org.apache.spark.SecurityManager
 import org.apache.spark.api.csharp.CSharpBackend
-import org.apache.spark.deploy.{SparkHadoopUtil, SparkSubmitArguments, PythonRunner}
-import org.apache.spark.util.{Utils, RedirectThread}
+import org.apache.spark.deploy.{PythonRunner, SparkHadoopUtil, SparkSubmitArguments}
+import org.apache.spark.util.{RedirectThread, Utils}
 import org.apache.spark.util.csharp.{Utils => CSharpSparkUtils}
 
 /**

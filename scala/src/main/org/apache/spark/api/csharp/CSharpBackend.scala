@@ -87,12 +87,10 @@ class CSharpBackend { self => // for accessing the this reference in inner class
     do {
       socket = CSharpBackend.callbackSockets.poll()
       if (socket != null) {
-        try {
           val dos = new DataOutputStream(socket.getOutputStream)
           SerDe.writeString(dos, "close")
           socket.close()
           socket = null
-        }
       }
     } while (socket != null)
     CSharpBackend.callbackSocketShutdown = true
