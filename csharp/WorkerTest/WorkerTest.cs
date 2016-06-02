@@ -546,7 +546,7 @@ namespace WorkerTest
 
                 // TODO verification should not depends on the output of worker
                 // we postpone the test of assertMessage after worker exit
-                assertMessage = "num_broadcast_variables: " + (broadcastVariablesToAdd.Length + broadcastVariablesToDelete.Length);
+                assertMessage = "Count of broadcast variables: " + (broadcastVariablesToAdd.Length + broadcastVariablesToDelete.Length);
             }
            
             AssertWorker(worker, 0, assertMessage);

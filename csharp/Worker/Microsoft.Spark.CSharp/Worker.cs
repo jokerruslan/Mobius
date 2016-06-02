@@ -199,7 +199,7 @@ namespace Microsoft.Spark.CSharp
         {
             // fetch names of includes - not used //TODO - complete the impl
             int numberOfIncludesItems = SerDe.ReadInt(networkStream);
-            logger.LogDebug("num_includes: " + numberOfIncludesItems);
+            logger.LogDebug("Count of included items: " + numberOfIncludesItems);
 
             if (numberOfIncludesItems > 0)
             {
