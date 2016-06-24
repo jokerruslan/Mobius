@@ -107,6 +107,16 @@ namespace Microsoft.Spark.CSharp.Core
             : this(null, null, null, conf)
         {}
 
+        public static SparkContext GetOrCreate(SparkConf conf)
+        {
+            if (_activeSparkContext == null)
+            {
+                _activeSparkContext = new SparkContext(conf);
+            }
+
+            return _activeSparkContext;
+        }
+
         /// <summary>
         /// when created from checkpoint
         /// </summary>
@@ -116,6 +126,7 @@ namespace Microsoft.Spark.CSharp.Core
         {
             SparkContextProxy = sparkContextProxy;
             SparkConf = conf;
+            _activeSparkContext = this;
         }
 
         private SparkContext(string master, string appName, string sparkHome, SparkConf conf)

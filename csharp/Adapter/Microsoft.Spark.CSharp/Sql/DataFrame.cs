@@ -170,6 +170,11 @@ namespace Microsoft.Spark.CSharp.Sql
             return Rdd.Collect(port).Cast<Row>();
         }
 
+        public IEnumerable<T> Collect<T>()
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Converts the DataFrame to RDD of Row
         /// </summary>

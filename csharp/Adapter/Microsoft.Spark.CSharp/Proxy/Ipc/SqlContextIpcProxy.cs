@@ -14,12 +14,12 @@ namespace Microsoft.Spark.CSharp.Proxy.Ipc
     internal class SqlContextIpcProxy : ISqlContextProxy
     {
         private readonly JvmObjectReference jvmSqlContextReference;
-
+        
         public SqlContextIpcProxy(JvmObjectReference jvmSqlContextReference)
         {
             this.jvmSqlContextReference = jvmSqlContextReference;
         }
-
+        
         public IDataFrameReaderProxy Read()
         {
             var javaDataFrameReaderReference = SparkCLRIpcProxy.JvmBridge.CallNonStaticJavaMethod(jvmSqlContextReference, "read");
@@ -105,12 +105,6 @@ namespace Microsoft.Spark.CSharp.Proxy.Ipc
                 });
 
             SparkCLRIpcProxy.JvmBridge.CallNonStaticJavaMethod(judf, "registerPython", new object[] {name, udf});
-        }
-
-        public ISqlContextProxy NewSession()
-        {
-            return new SqlContextIpcProxy(
-                new JvmObjectReference((string)SparkCLRIpcProxy.JvmBridge.CallNonStaticJavaMethod(jvmSqlContextReference, "newSession")));
         }
 
         public string GetConf(string key, string defaultValue)

@@ -78,7 +78,7 @@ namespace Microsoft.Spark.CSharp.Samples
             }
             else
             {
-                return new Uri(Path.Combine(SampleDataLocation, fileName)).ToString();
+                return Path.Combine(SampleDataLocation, fileName).ToString();
             }
         }
     }
