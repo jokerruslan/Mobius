@@ -32,7 +32,7 @@ Same as [instructions for Windows](windows-instructions.md#running-samples) but 
 Note that paths to files and syntax of the environment variables (like $SPARKCLR_HOME) will need to be updated for Linux when following the instructions for Windows.
 
 # Running Mobius Examples in Linux
-Same as [instructions for Windows] but with Linux scripts and paths. Refer to following general instructions for running any Mobius application in Linux.
+Same as [instructions for Windows](./running-mobius-app.md#running-mobius-examples-in-local-mode) but with Linux scripts and paths. Refer to following general instructions for running any Mobius application in Linux.
 
 # Running Mobius Applications in Linux
 
