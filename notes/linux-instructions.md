@@ -1,6 +1,6 @@
 # Building Mobius in Linux
 
-## Prerequisites
+## Requirements
 
 * JDK 7 or above.
 * Maven 3.0.5 or above.
@@ -12,6 +12,8 @@
 The following environment variables should be set properly:
 
 * `JAVA_HOME`
+
+## Instructions
 
 Instructions to build Mobius in Linux are same as [instructions for Windows](windows-instructions.md#instructions). The only change required is to use the following script files instead of .cmd files:
 * build.sh
@@ -46,7 +48,7 @@ The [instructions](./running-mobius-app.md#windows-instructions) for running Mob
 * Instead of `sparkclr-submit.cmd`, use `sparkclr-submit.sh`
 
 If you are using CentOS, Fedora, or similar Linux distributions or OS X, follow the steps desicribed below that conforms to [Mono application depoyment guidelines](http://www.mono-project.com/docs/getting-started/application-deployment/)
-  * Create a script (referred to as 'prefix script') that will use Mono to execute Mobius driver application. See the [linux-prefix-script.md](./linux-prefix-script.md) for a sample. This script will be used in the place of mobius driver application when launching [sparkclr-submit.cmd](./linux-instructions.md#running-mobius-samples-in-linux)
+  * Create a script (referred to as 'prefix script') that will use Mono to execute Mobius driver application. See the [linux-prefix-script.md](./linux-prefix-script.md) for a sample. The name of this script will be used in the place of the name of the mobius driver application when launching [sparkclr-submit.cmd](./linux-instructions.md#running-mobius-samples-in-linux)
   * Update CSharpWorkerPath setting in Mobius application config (refer to the config files used in Mobius examples like the [config for with Pi example](https://github.com/skaarthik/Mobius/blob/linux/examples/Batch/pi/App.config#L61)) to point to [CSharpWorker.sh.exe](./linux-csharpworker-prefix-script.md) (make sure to set the correct value appropriate for the Spark mode to be used)
 
 **Note** - only client mode is support in Mobius on YARN in Linux. Support for [cluster mode](https://github.com/Microsoft/Mobius/issues/467) will be added soon.
