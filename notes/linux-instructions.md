@@ -4,7 +4,7 @@
 
 * JDK 7 or above.
 * Maven 3.0.5 or above.
-* Mono 4.2 stable or above. The download and installation instructions for Mono are available in [http://www.mono-project.com/download/#download-lin](http://www.mono-project.com/download/#download-lin) (see [Debian, Ubuntu and derivatives](http://www.mono-project.com/docs/getting-started/install/linux/#debian-ubuntu-and-derivatives) or [CentOS, Fedora, similar Linux distributions or OS X](http://www.mono-project.com/docs/getting-started/install/linux/#centos-7-fedora-19-and-later-and-derivatives)
+* Mono 4.2 stable or above. The download and installation instructions for Mono are available in [http://www.mono-project.com/download/#download-lin](http://www.mono-project.com/download/#download-lin) (see [Debian, Ubuntu and derivatives](http://www.mono-project.com/docs/getting-started/install/linux/#debian-ubuntu-and-derivatives) or [CentOS, Fedora, similar Linux distributions or OS X](http://www.mono-project.com/docs/getting-started/install/linux/#centos-7-fedora-19-and-later-and-derivatives))
 * F# for Mono. The download and installation instructions for the F# Mono extension are available in [http://fsharp.org/use/linux/](http://fsharp.org/use/linux/)
 * NuGet.
 * XSLTPROC
@@ -47,7 +47,7 @@ The [instructions](./running-mobius-app.md#windows-instructions) for running Mob
 
 If you are using CentOS, Fedora, or similar Linux distributions or OS X, follow the steps desicribed below that conforms to [Mono application depoyment guidelines](http://www.mono-project.com/docs/getting-started/application-deployment/)
   * Create a script (referred to as 'prefix script') that will use Mono to execute Mobius driver application. See the [linux-prefix-script.md](./linux-prefix-script.md) for a sample. This script will be used in the place of mobius driver application when launching [sparkclr-submit.cmd](./linux-instructions.md#running-mobius-samples-in-linux)
-  * Update CSharpWorkerPath setting in [Mobius application config](https://github.com/Microsoft/Mobius/blob/master/csharp/Worker/Microsoft.Spark.CSharp/App.config) to point to [CSharpWorker.sh.exe](./linux-csharpworker-prefix-script.md) (make sure to set the correct value appropriate for the Spark mode to be used)
+  * Update CSharpWorkerPath setting in Mobius application config (refer to the config files used in Mobius examples like the [config for with Pi example](https://github.com/skaarthik/Mobius/blob/linux/examples/Batch/pi/App.config#L61)) to point to [CSharpWorker.sh.exe](./linux-csharpworker-prefix-script.md) (make sure to set the correct value appropriate for the Spark mode to be used)
 
 **Note** - only client mode is support in Mobius on YARN in Linux. Support for [cluster mode](https://github.com/Microsoft/Mobius/issues/467) will be added soon.
 
