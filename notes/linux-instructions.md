@@ -46,8 +46,8 @@ The [instructions](./running-mobius-app.md#windows-instructions) for running Mob
 * Instead of `sparkclr-submit.cmd`, use `sparkclr-submit.sh`
 
 If you are using CentOS, Fedora, or similar Linux distributions or OS X, follow the steps desicribed below that conforms to [Mono application depoyment guidelines](http://www.mono-project.com/docs/getting-started/application-deployment/)
-    * Create a script (referred to as 'prefix script') that will use Mono to execute Mobius driver application. See the [linux-prefix-script.md](./linux-prefix-script.md) for a sample. This script will be used in the place of mobius driver application when launching sparkclr-submit.cmd
-    * Update CSharpWorkerPath setting in [CSharpWorker.exe.config](https://github.com/Microsoft/Mobius/blob/master/csharp/Worker/Microsoft.Spark.CSharp/App.config) to point to CSharpWorker.sh.exe (make sure to set the correct value appropriate for the Spark mode to be used)
+  * Create a script (referred to as 'prefix script') that will use Mono to execute Mobius driver application. See the [linux-prefix-script.md](./linux-prefix-script.md) for a sample. This script will be used in the place of mobius driver application when launching [sparkclr-submit.cmd](./linux-instructions.md#running-mobius-samples-in-linux)
+  * Update CSharpWorkerPath setting in [Mobius application config](https://github.com/Microsoft/Mobius/blob/master/csharp/Worker/Microsoft.Spark.CSharp/App.config) to point to [CSharpWorker.sh.exe](./linux-csharpworker-prefix-script.md) (make sure to set the correct value appropriate for the Spark mode to be used)
 
 **Note** - only client mode is support in Mobius on YARN in Linux. Support for [cluster mode](https://github.com/Microsoft/Mobius/issues/467) will be added soon.
 
